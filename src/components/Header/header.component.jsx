@@ -1,6 +1,8 @@
 import React from 'react';
 import './header.styles.scss';
 
+import MainMenu from '../Main-menu/main-menu.component';
+
 class Header extends React.Component {
 
     constructor(){
@@ -21,11 +23,17 @@ class Header extends React.Component {
 
     render() {
         let title = this.state.title;
-        console.log('rendered');
         
         return (
             <div className="header">
-                {title}
+                <div className="container">
+                    
+                    <span className="store-name">
+                    {title}
+                    </span>
+
+                    <MainMenu />
+                </div>
             </div>
         )
     }

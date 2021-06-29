@@ -1,0 +1,21 @@
+.main-menu{
+    list-style: none;
+    display: block;
+    float: right;
+    margin: 0;
+    
+    .menu-item{
+        display: inline;
+        color: #fff;
+        font-weight: 500;
+
+        &:hover{
+            cursor: pointer;
+        }
+        
+        &:not(:last-child){
+            margin-right: 10px;
+        }
+        
+    }
+}
