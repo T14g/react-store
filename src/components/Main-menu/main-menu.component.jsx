@@ -1,15 +1,17 @@
 import React from 'react';
 import './main-menu.styles.scss';
 
-const MainMenu = () => {
+const MainMenu = ({ items = [] }) => {
 
     return (
         <ul className="main-menu">
-            <li className="menu-item">Home</li>
-            <li className="menu-item">Baralhos</li>
-            <li className="menu-item">Cordas</li>
-            <li className="menu-item">Outros</li>
-            <li className="menu-item">Contato</li>
+            {
+                items.map((item, index) => {
+                    return (
+                        <li key={index} className="menu-item">{item.name}</li>
+                    )
+                })
+            }
         </ul>
     );
 }
