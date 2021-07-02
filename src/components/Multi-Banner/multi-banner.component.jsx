@@ -7,27 +7,31 @@ class MultiBanner extends React.Component {
         super();
 
         this.state = {
-            options: [
-                {
-                    'Colors 1': ['red', 'blue'],
-                    'Colors 2': ['green', 'pink', 'yellow']
-                }
-            ],
-            bg : 'gray'
+            options:
+            {
+                'Colors 1': ['red', 'blue'],
+                'Colors 2': ['green', 'pink', 'yellow']
+            }
+            ,
+            background: 'gray'
         }
     }
 
-    setBackground = (group) => {
-        console.log(this.state.options[group]);
+    setBackground = (key) => {
+
+        let colors = this.state.options[key];
+        let index = Math.floor(Math.random() * (colors.length));
+        this.setState({ background: colors[index] });
+
     }
 
     render() {
 
-        let options = this.state.options ? Object.keys(this.state.options[0]) : [];
+        let options = this.state.options ? Object.keys(this.state.options) : [];
         console.log(options);
         return (
             <React.Fragment>
-                <div className="mb-background" style={{background : this.state.bg}}></div>
+                <div className="mb-background" style={{ background: this.state.background }}></div>
                 <div>
                     {
                         options.map((opt, index) =>
