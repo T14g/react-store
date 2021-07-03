@@ -32,15 +32,22 @@ class MultiBanner extends React.Component {
         }
     }
 
+    generateRandom = (len) => Math.floor(Math.random() * len);
+
     updateState = (key) => {
 
         let colors = this.state.options[key]['colors'];
         let textColor = this.state.options[key]['textColor'];
-        let index = Math.floor(Math.random() * (colors.length));
+        let index = this.generateRandom(colors.length);
         let title = this.state.options[key]['title'];
 
         this.setState({ background: colors[index], textColor: textColor, title: title });
 
+    }
+
+    componentDidMount() {
+        let rand = this.generateRandom(this.state.options.length);
+        this.updateState(rand);
     }
 
     render() {
