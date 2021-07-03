@@ -8,43 +8,58 @@ class MultiBanner extends React.Component {
 
         this.state = {
             options:
-            {
-                'Dark Colors': ['#000000', '#0c0c0c', '#191919'],
-                'Light Colors': ['#ffffff', '#fdfbf2', '#fbf8e6'],
-                'Green Tones' : ['#001900','#003300', '#004c00']
-            }
+                [
+                    {
+                        title: 'Dark Colors',
+                        textColor: 'clear',
+                        colors: ['#000000', '#0c0c0c', '#191919']
+                    },
+                    {
+                        title: 'Light Colors',
+                        textColor: 'dark',
+                        colors: ['#ffffff', '#fdfbf2', '#fbf8e6']
+                    },
+                    {
+                        title: 'Green Tones',
+                        textColor: 'clear',
+                        colors: ['#001900', '#003300', '#004c00']
+                    }
+                ]
             ,
-            background: 'gray'
+            background: 'gray',
+            textColor: 'clear',
+            title: 'Título'
         }
     }
 
-    setBackground = (key) => {
+    updateState = (key) => {
 
-        let colors = this.state.options[key];
+        let colors = this.state.options[key]['colors'];
+        let textColor = this.state.options[key]['textColor'];
         let index = Math.floor(Math.random() * (colors.length));
-        this.setState({ background: colors[index] });
+        let title = this.state.options[key]['title'];
+
+        this.setState({ background: colors[index], textColor: textColor, title: title });
 
     }
 
     render() {
 
-        let options = this.state.options ? Object.keys(this.state.options) : [];
-        console.log(options);
+        let options = this.state.options ? this.state.options : [];
+
         return (
             <React.Fragment>
                 <div className="mb-background" style={{ background: this.state.background }}>
-                    <h2 className="title">Título</h2>
+                    <h2 className={`title ${this.state.textColor}`}>{this.state.title}</h2>
                 </div>
-                <div>
+                <div className="options-container">
                     {
                         options.map((opt, index) =>
-                            <button key={index} onClick={() => this.setBackground(opt)}>{opt}</button>
+                            <button className={`${this.state.textColor}`} key={index} onClick={() => this.updateState(index)}>{opt.title}</button>
                         )
                     }
                 </div>
             </React.Fragment>
-
-
         )
     }
 
