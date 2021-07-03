@@ -1,4 +1,13 @@
 .mb-background{
     width: 100%;
     min-height: 400px;
+
+    .title{
+        text-align: center;
+        margin: 0;
+        padding: 130px 0;
+        font-size: 50px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
 }

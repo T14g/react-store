@@ -9,8 +9,9 @@ class MultiBanner extends React.Component {
         this.state = {
             options:
             {
-                'Colors 1': ['red', 'blue'],
-                'Colors 2': ['green', 'pink', 'yellow']
+                'Dark Colors': ['#000000', '#0c0c0c', '#191919'],
+                'Light Colors': ['#ffffff', '#fdfbf2', '#fbf8e6'],
+                'Green Tones' : ['#001900','#003300', '#004c00']
             }
             ,
             background: 'gray'
@@ -31,7 +32,9 @@ class MultiBanner extends React.Component {
         console.log(options);
         return (
             <React.Fragment>
-                <div className="mb-background" style={{ background: this.state.background }}></div>
+                <div className="mb-background" style={{ background: this.state.background }}>
+                    <h2 className="title">Título</h2>
+                </div>
                 <div>
                     {
                         options.map((opt, index) =>
